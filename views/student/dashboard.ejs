@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <title>Student</title>
+    <script src="/jquery.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1>Student Section</h1>
+        <h2>
+            Welcome
+            <%=name%>
+            <a href="/student/signout" style="float:right">Signout</a>
+        </h2>
+    </div>
+    <div>
+        <form action="/student/request" method="POST">
+            <label>Reason:</label><input type="text" name="reason" placeholder="Eg:- fever">
+            <label>From:</label><input type="date" name="from_date">
+            <label>To:</label><input type="date" name="to_date">
+            <input type="submit">
+        </form>
+    </div>
+    <div>
+        <table border="1px" style="width: 100%;text-align: center">
+            <caption>Requested Forms</caption>
+            <tr>
+                <th>Reference ID</th>
+                <th>Reason</th>
+                <th>From Date</th>
+                <th>To Date</th>
+                <th>Status</th>
+            </tr>
+            <% forms.forEach(function(form){ %>
+            <tr>
+                <td>
+                    <%=form.id%>
+                </td>
+                <td>
+                    <%=form.reason%>
+                </td>
+                <td>
+                    <%=form.from_date%>
+                </td>
+                <td>
+                    <%=form.to_date%>
+                </td>
+                <td>
+                    <% if(form.status==0){ %>
+                    Pending
+                    <% } else if(form.status==1){%>
+                    Faculty Accepted
+                    <% } else if(form.status==-1){%>
+                    Faculty Rejected
+                    <% } else if(form.status==2){%>
+                    Hod Accepted
+                    <% } else if(form.status==-2){%>
+                    Hod Rejected
+                    <% } %>
+                </td>
+            </tr>
+            <% }) %>
+        </table>
+    </div>
+</body>
+
+</html>

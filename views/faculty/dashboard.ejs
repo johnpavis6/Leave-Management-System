@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <title>Faculty</title>
+</head>
+
+<body>
+    <div>
+        <h1>Faculty Section</h1>
+        <h2>
+            Welcome
+            <%=name%>
+            <a href="/faculty/signout" style="float:right">Signout</a>
+        </h2>
+    </div>
+    <div>
+        <table border="1px" style="width: 100%;text-align: center">
+            <caption>
+                <h3>Requested Forms</h3>
+            </caption>
+            <tr>
+                <th>Reference ID</th>
+                <th>Reason</th>
+                <th>From Date</th>
+                <th>To Date</th>
+                <th>Option</th>
+            </tr>
+            <% forms.forEach(function(form){ %>
+            <tr>
+                <td>
+                    <%=form.id%>
+                </td>
+                <td>
+                    <%=form.reason%>
+                </td>
+                <td>
+                    <%=form.from_date%>
+                </td>
+                <td>
+                    <%=form.to_date%>
+                </td>
+                <td>
+                    <form action="/faculty/submit" method="POST">
+                        <input type="hidden" name="id" value="<%=form.id%>">
+                        <select name="status">
+                            <option value=1>Accept</option>
+                            <option value=-1>Reject</option>
+                        </select>
+                        <input type="submit">
+                    </form>
+                </td>
+            </tr>
+            <% }) %>
+        </table>
+    </div>
+</body>
+
+</html>

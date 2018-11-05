@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <title>HOD</title>
+    <script src="/jquery.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1><a href="/hod">HOD Section</a><a href="/" style="float:right">Home</a></h1>
+        <div>
+            <% if(code){ %>
+            <h4>
+                <%= message %>
+            </h4>
+            <% } %>
+        </div>
+        <form action="/hod/" method="post">
+            <fieldset>
+                <legend>
+                    <h2>Go inside</h2>
+                </legend>
+                <input type="number" name="roll_no" placeholder="Hod ID" required value="2015103568">
+                <input type="password" name="password" placeholder="Password" required value="123">
+                <input type="submit" value="Signin">
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+</html>

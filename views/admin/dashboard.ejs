@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <title>Admin Section</title>
+    <link rel="stylesheet" href="css/admin.dashboard.css">
+</head>
+
+<body>
+    <ul style="text-transform: capitalize">
+        <% tables.forEach(function(table){ %>
+        <li>
+            <a href="javascript:_process('<%= table.Tables_in_lms %>')">
+                <%= table.Tables_in_lms %></a>
+        </li>
+        <% }) %>
+    </ul>
+    <br>
+    <form onsubmit="process();return false;">
+        <label>Query</label>
+        <input id="query" placeholder="Type your query..." required>
+        <input type="submit" value="Proceed">
+    </form>
+    <div id="error"></div>
+    <table id="rows"></table>
+</body>
+<script src="/jquery.js"></script>
+<script src="js/admin.dashboard.js"></script>
+
+</html>

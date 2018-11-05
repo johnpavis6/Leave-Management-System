@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <title>Student</title>
+    <script src="/jquery.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1><a href="/student">Student Section</a><a href="/" style="float:right">Home</a></h1>
+        <div>
+            <% if(code){ %>
+            <h4>
+                <%= message %>
+            </h4>
+            <% } %>
+        </div>
+        <form action="/student/signup" method="post">
+            <fieldset>
+                <legend>
+                    <h2>Create an Account</h2>
+                </legend>
+                <input type="text" name="name" placeholder="Name">
+                <input type="number" name="roll_no" placeholder="Roll no">
+                <input type="email" name="email" placeholder="Email">
+                <input type="number" name="mobile_no" placeholder="Mobile no">
+                <input type="date" name="dob">
+                <input type="password" name="password" placeholder="Password">
+                <select name="department_id" onchange="listFaculties(this.value)">
+                    <% departments.forEach(function(department){%>
+                    <option value="<%=department.id%>">
+                        <%=department.name%>
+                    </option>
+                    <% }); %>
+                </select>
+                <select name="faculty_id" id="faculty_id">
+                    <% faculties.forEach(function(faculty){%>
+                    <option value="<%=faculty.faculty_id%>">
+                        <%=faculty.name%>
+                    </option>
+                    <% }); %>
+                </select>
+                <input type="submit" value="Signup">
+            </fieldset>
+        </form>
+    </div>
+</body>
+<script>
+    var faculties = JSON.parse('<%- JSON.stringify(faculties) %>');
+    var listFaculties = function (department_id) {
+        var code = '';
+        faculties.forEach(function (faculty) {
+            if (faculty.department_id == department_id) {
+                code += `<option value="${faculty.id}">${faculty.name}</option>`;
+            }
+        });
+        $("#faculty_id").html(code);
+    };
+</script>
+
+</html>

@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>Faculty</title>
+    <script src="/jquery.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1><a href="/faculty">Faculty Section</a><a href="/" style="float:right">Home</a></h1>
+        <div>
+            <% if(code){ %>
+            <h4>
+                <%= message %>
+            </h4>
+            <% } %>
+        </div>
+        <form action="/faculty/signup" method="post">
+            <fieldset>
+                <legend>
+                    <h2>Create an Account</h2>
+                </legend>
+                <input type="text" name="name" placeholder="Name">
+                <input type="number" name="roll_no" placeholder="Faculty ID">
+                <input type="email" name="email" placeholder="Email">
+                <input type="number" name="mobile_no" placeholder="Mobile no">
+                <input type="date" name="dob">
+                <input type="password" name="password" placeholder="Password">
+                <select name="department_id">
+                    <% departments.forEach(function(department){%>
+                    <option value="<%=department.id%>">
+                        <%=department.name%>
+                    </option>
+                    <% }); %>
+                </select>
+                <input type="submit" value="Signup">
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+</html>

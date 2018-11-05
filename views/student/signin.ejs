@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <title>Student</title>
+    <script src="/jquery.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1><a href="/student">Student Section</a><a href="/" style="float:right">Home</a></h1>
+        <div>
+            <% if(code){ %>
+            <h4>
+                <%= message %>
+            </h4>
+            <% } %>
+        </div>
+        <form action="/student/signin" method="post">
+            <fieldset>
+                <legend>
+                    <h2>Go inside</h2>
+                </legend>
+                <input type="number" name="roll_no" placeholder="Roll no">
+                <input type="password" name="password" placeholder="Password">
+                <input type="submit" value="Signin">
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+</html>
